@@ -1,5 +1,8 @@
 package product;
 
+import multiply.MultiplicationTable;
+import multiply.Task;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
@@ -20,15 +23,27 @@ public class Main {
         System.out.println(productList);
 
         numberSetRemoveEven();
+
+        MultiplicationTable multiplicationTable = new MultiplicationTable();
+        System.out.println(multiplicationTable);
+        Task task = new Task(3,4);
+        Task task1 = new Task(3,4);
+        Task task2 = new Task(4,3);
+        Set<Task> tasks = new HashSet<>();
+        tasks.add(task);
+        tasks.add(task1);
+        tasks.add(task2);
+        System.out.println(tasks);
     }
 
     private static void numberSetRemoveEven() {
-        Set<Integer> numbers = new HashSet<>();
+        Set<Integer> numbers = new HashSet<>(20);
         Random random = new Random();
-        for (int i = 0; i < 20; i++) {
+        while (numbers.size() < 20){
             numbers.add(random.nextInt(1000));
         }
         System.out.println(numbers);
+        // numbers.removeIf(next -> next %2 != 0);
         Iterator<Integer> iterator = numbers.iterator();
         while (iterator.hasNext()) {
             Integer next = iterator.next();
