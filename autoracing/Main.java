@@ -14,14 +14,12 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
 
+
         Car audi = new Car(
                 "Audi",
                 "A8",
                 3.0f,
                 BodyType.SEDAN);
-        audi.addDriver(new DriverB("driver1", 10,audi));
-        audi.addSponsor(new Sponsor("sponsor1", 10_000f));
-        audi.addMechanic(new Mechanic("mechanic1", "company1"));
 
         audi.printType();
 
@@ -30,9 +28,6 @@ public class Main {
                 "4911-EXTREME",
                 17.2f,
                 LoadType.N3);
-        kamaz.addDriver(new DriverC ("driver2", 10,kamaz));
-        kamaz.addSponsor(new Sponsor ("sponsor2", 15_000f));
-        kamaz.addMechanic(new Mechanic("mechanic2", "company2"));
 
         kamaz.printType();
 
@@ -41,20 +36,31 @@ public class Main {
                 "806",
                 2.0f,
                 CapacityType.ESPECIALLY_SMALL);
-        peugeot.addDriver(new DriverD("driver3", 10,peugeot));
-        peugeot.addSponsor(new Sponsor("sponsor3", 10_000f));
-        peugeot.addMechanic(new Mechanic("mechanic3", "company3"));
 
         peugeot.printType();
 
-        Sponsor sponsor1 = new Sponsor("sponsor1", 10_000f);
-        Sponsor sponsor2 = new Sponsor("sponsor2", 15_000f);
-        Sponsor sponsor3 = new Sponsor("sponsor3", 10_000f);
+
+        Sponsor xbet = new Sponsor("1XBET", 50_000);
+        Sponsor ligastavok = new Sponsor("Лига ставок", 100_000);
 
         SponsorsList sponsorsList = new SponsorsList();
-        sponsorsList.add(sponsor1);
-        sponsorsList.add(sponsor2);
-        sponsorsList.add(sponsor3);
+        sponsorsList.add(xbet);
+        sponsorsList.add(ligastavok);
+
+        Mechanic ivanov = new Mechanic(
+                "Иванов И.И.",
+                "Форсаж");
+        Mechanic petrov = new Mechanic(
+                "Петров А.А.",
+                "Молния");
+        Mechanic orlov = new Mechanic(
+                "Орлов И.А.",
+                "Орел");
+
+        MechanicList mechanicList = new MechanicList();
+        mechanicList.add(ivanov);
+        mechanicList.add(petrov);
+        mechanicList.add(orlov);
 
         DriverB driverB = new DriverB("Driver A", 5, audi);
         DriverC driverC = new DriverC("Driver B", 7, kamaz);
@@ -65,15 +71,17 @@ public class Main {
         driverList.add(driverC);
         driverList.add(driverD);
 
-        Mechanic mechanic1 = new Mechanic("mechanic1", "company1");
-        Mechanic mechanic2 = new Mechanic("mechanic2", "company2");
-        Mechanic mechanic3 = new Mechanic("mechanic3", "company3");
+        audi.addDriver(driverB);
+        kamaz.addDriver(driverC);
+        peugeot.addDriver(driverD);
 
-        MechanicList mechanicList = new MechanicList();
-        mechanicList.add(mechanic1);
-        mechanicList.add(mechanic2);
-        mechanicList.add(mechanic3);
+        audi.addMechanic(ivanov);
+        kamaz.addMechanic(petrov);
+        peugeot.addMechanic(orlov);
 
+        audi.addSponsor(xbet);
+        kamaz.addSponsor(xbet, ligastavok);
+        peugeot.addSponsor(ligastavok);
 
         ServiceStation serviceStation = new ServiceStation();
         serviceStation.addCar(audi);
