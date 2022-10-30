@@ -44,8 +44,8 @@ public class Main {
         Sponsor ligastavok = new Sponsor("Лига ставок", 100_000);
 
         SponsorsList sponsorsList = new SponsorsList();
-        sponsorsList.add(xbet);
-        sponsorsList.add(ligastavok);
+        sponsorsList.addSponsor(xbet);
+        sponsorsList.addSponsor(ligastavok);
 
         Mechanic ivanov = new Mechanic(
                 "Иванов И.И.",
@@ -58,18 +58,18 @@ public class Main {
                 "Орел");
 
         MechanicList mechanicList = new MechanicList();
-        mechanicList.add(ivanov);
-        mechanicList.add(petrov);
-        mechanicList.add(orlov);
+        mechanicList.addMechanic(ivanov);
+        mechanicList.addMechanic(petrov);
+        mechanicList.addMechanic(orlov);
 
         DriverB driverB = new DriverB("Driver A", 5, audi);
         DriverC driverC = new DriverC("Driver B", 7, kamaz);
         DriverD driverD = new DriverD("Driver C", 5, peugeot);
 
         DriverList driverList = new DriverList();
-        driverList.add(driverB);
-        driverList.add(driverC);
-        driverList.add(driverD);
+        driverList.addDrive(driverB);
+        driverList.addDrive(driverC);
+        driverList.addDrive(driverD);
 
         audi.addDriver(driverB);
         kamaz.addDriver(driverC);

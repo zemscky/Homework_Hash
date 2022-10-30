@@ -56,6 +56,7 @@ public abstract class Driver <T extends Transport> {
         transport.printType();
     }
 
+
     @Override
     public String toString() {
         return fullName + ", стаж водителя: " + drivingExperience + " лет, категория прав: "

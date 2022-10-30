@@ -9,7 +9,6 @@ public class Mechanic  {
     private final String fullName;
     private final String company;
 
-
     public Mechanic(String fullName,
                     String company
     ) {
@@ -36,8 +35,6 @@ public class Mechanic  {
     public String getCompany() {
         return company;
     }
-
-
 
     @Override
     public String toString() {
