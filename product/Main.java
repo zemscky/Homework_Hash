@@ -1,5 +1,10 @@
 package product;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
         Product coffee = new Product("Кофе",150,0.25D);
@@ -7,6 +12,7 @@ public class Main {
         Product bread = new Product("Хлеб",70,0.7D);
         Product tea = new Product("Чай",200,0.5D);
         Product cookie = new Product("Печенье",100,0.5D);
+
         ProductList productList = new ProductList();
         productList.addProduct(coffee);
         productList.addProduct(sugar);

@@ -3,7 +3,7 @@ package product;
 import java.util.*;
 
 public class ProductList {
-        private final Set<Product> products = new HashSet<>();
+    private final Set<Product> products = new HashSet<>();
 
       public void  addProduct(Product product){
           if (product == null){
@@ -40,5 +40,6 @@ public class ProductList {
        for (Product product: this.products) {
            stringBuilder.append(product).append('\n');
        }
+       return stringBuilder.toString();
     }
 }

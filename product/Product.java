@@ -10,7 +10,7 @@ public class Product {
 
 
     public Product(String name, int price, Double amount) {
-        if (name == null || name.isBlank() || price < 0 || amount <0) {
+        if (name == null || name.isBlank() || price < 0 || amount < 0) {
             throw new IllegalArgumentException("Заполните карточку товара полностью");
         }
         this.name = name;
@@ -35,7 +35,8 @@ public class Product {
     @Override
     public String toString() {
         String checkedString = this.isChecked() ? "Да" : "Нет";
-        return String.format("%s, Цена: %s, количество: %s, ");
+        return String.format("%s, Цена: %s, Количество: %s, Куплено: %s", this.name,this.price
+        ,this.amount,checkedString);
     }
 
     public String getName() {
