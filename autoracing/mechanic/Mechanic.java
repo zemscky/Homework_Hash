@@ -3,18 +3,16 @@ package autoracing.mechanic;
 
 import autoracing.transport.Transport;
 
+import java.util.Objects;
+
 public class Mechanic  {
     private final String fullName;
     private final String company;
-    private final boolean fixesBusses;
-    private final boolean fixesTrucks;
-    private final boolean fixesCars;
+
 
     public Mechanic(String fullName,
-                    String company,
-                    boolean fixesBusses,
-                    boolean fixesTrucks,
-                    boolean fixesCars) {
+                    String company
+    ) {
         if (fullName == null || fullName.isBlank()
                 || company == null || company.isBlank()
         ) {
@@ -22,9 +20,6 @@ public class Mechanic  {
         }
         this.fullName = fullName;
         this.company = company;
-        this.fixesBusses = fixesBusses;
-        this.fixesTrucks = fixesTrucks;
-        this.fixesCars = fixesCars;
     }
 
     public void service (Transport transport) {
@@ -42,25 +37,25 @@ public class Mechanic  {
         return company;
     }
 
-    public boolean isFixesBusses() {
-        return fixesBusses;
-    }
 
-    public boolean isFixesTrucks() {
-        return fixesTrucks;
-    }
-
-    public boolean isFixesCars() {
-        return fixesCars;
-    }
 
     @Override
     public String toString() {
         return "Механик: " +
                 " Ф.И.О: " + fullName +
-                ", компания: " + company +
-                ", работает с: " + fixesBusses +
-                ", работает с: " + fixesTrucks +
-                ", работает с: " + fixesCars;
+                ", компания: " + company ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic mechanic = (Mechanic) o;
+        return Objects.equals(fullName, mechanic.fullName) && Objects.equals(company, mechanic.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, company);
     }
 }

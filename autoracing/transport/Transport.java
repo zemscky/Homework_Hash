@@ -6,6 +6,7 @@ import autoracing.mechanic.Mechanic;
 import autoracing.sponsor.Sponsor;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public abstract class Transport {
@@ -13,21 +14,26 @@ public abstract class Transport {
     private final String model;
     private final float engineVolume;
 
-    private final Driver driver;
-    private final Set<Mechanic> mechanics;
-    private final Set<Sponsor> sponsors;
+    private final Set<Driver> drivers = new HashSet<>();
+    private final Set<Mechanic> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
     public Transport(
             String brand,
             String model,
-            float engineVolume,
-            Driver driver) {
+            float engineVolume) {
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
-        this.driver = driver;
-        mechanics = new HashSet<>();
-        sponsors = new HashSet<>();
+    }
+    public void addDriver(Driver<?>... drivers) {
+        this.drivers.addAll(Set.of(drivers));
+    }
+    public void addMechanic(Mechanic... mechanics) {
+        this.mechanics.addAll(Set.of(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors) {
+        this.sponsors.addAll(Set.of(sponsors));
     }
 
 
@@ -52,14 +58,30 @@ public abstract class Transport {
 
     public abstract void repair();
 
-    public void printPersonInfo() {
-        System.out.println("Водитель: " +driver.getFullName());
-        for (Sponsor sponsor : sponsors) {
-            System.out.println(sponsor);
-        }
-        for (Mechanic mechanic : mechanics) {
-            System.out.println(mechanic);
-        }
+    public Set<Driver> getDrivers() {
+        return drivers;
     }
+
+    public Set<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport transport = (Transport) o;
+        return Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model);
+    }
+
 
 }

@@ -1,7 +1,7 @@
 package autoracing.transport;
 
 import autoracing.LoadType;
-import autoracing.driver.DriverB;
+import autoracing.driver.Driver;
 import autoracing.driver.DriverC;
 import autoracing.mechanic.Mechanic;
 import autoracing.sponsor.Sponsor;
@@ -17,12 +17,9 @@ public class Truck extends Transport implements Competing{
             String brand,
             String model,
             float engineVolume,
-            LoadType loadType,
-            DriverC driverC,
-            Set<Mechanic> mechanics,
-            Set<Sponsor> sponsors
+            LoadType loadType
     ) {
-        super(brand, model, engineVolume, driverC);
+        super(brand, model, engineVolume);
         this.loadType = loadType;
     }
 

@@ -1,6 +1,7 @@
 package autoracing.transport;
 
 import autoracing.CapacityType;
+import autoracing.driver.Driver;
 import autoracing.driver.DriverD;
 import autoracing.mechanic.Mechanic;
 import autoracing.sponsor.Sponsor;
@@ -15,12 +16,10 @@ public class Bus extends Transport implements Competing{
             String brand,
             String model,
             float engineVolume,
-            CapacityType capacityType,
-            DriverD driverD,
-            Set<Mechanic> mechanics,
-            Set<Sponsor> sponsors
+            CapacityType capacityType
+
     ) {
-        super(brand, model, engineVolume, driverD);
+        super(brand, model, engineVolume);
         this.capacityType = capacityType;
     }
 

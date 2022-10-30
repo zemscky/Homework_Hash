@@ -1,21 +1,20 @@
 package autoracing.sponsor;
 
+import java.util.Objects;
+
 public class Sponsor {
 
     private final String name;
     private final float sponsorshipSum;
-    private final boolean physical;
 
     public Sponsor(String name,
-                   float sponsorshipSum,
-                   boolean physical) {
+                   float sponsorshipSum) {
         if (sponsorshipSum < 0 || name == null || name.isBlank()
         ) {
             throw new IllegalArgumentException("Заполните данные полностью");
         }
         this.name = name;
         this.sponsorshipSum = sponsorshipSum;
-        this.physical = physical;
     }
 
     public String getName() {
@@ -26,15 +25,24 @@ public class Sponsor {
         return sponsorshipSum;
     }
 
-    public boolean isPhysical() {
-        return physical;
-    }
 
     @Override
     public String toString() {
         return "Спонсор: " +
                 " наименование: " + name +
-                ", сумма: " + sponsorshipSum +
-                ", тип" + physical;
+                ", сумма: " + sponsorshipSum;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return Float.compare(sponsor.sponsorshipSum, sponsorshipSum) == 0 && Objects.equals(name, sponsor.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, sponsorshipSum);
     }
 }

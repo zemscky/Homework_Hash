@@ -1,8 +1,8 @@
 package autoracing.transport;
 
 import autoracing.BodyType;
+import autoracing.driver.Driver;
 import autoracing.driver.DriverB;
-import autoracing.driver.DriverD;
 import autoracing.mechanic.Mechanic;
 import autoracing.sponsor.Sponsor;
 
@@ -16,12 +16,9 @@ public class Car  extends Transport implements Competing {
             String brand,
             String model,
             float engineVolume,
-            BodyType bodyType,
-            DriverB driverB,
-            Set<Mechanic> mechanics,
-            Set<Sponsor> sponsors
+            BodyType bodyType
     ) {
-        super(brand, model, engineVolume, driverB);
+        super(brand, model, engineVolume);
         this.bodyType = bodyType;
     }
 
