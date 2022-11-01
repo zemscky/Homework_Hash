@@ -1,11 +1,13 @@
 package product;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+
 public class Recipe {
     private final String name;
-    private final Set<Product> products;
+    private Set<Product> products;
 
     public Recipe(String name, Set<Product> products) {
         if (name == null || name.isBlank()
@@ -20,10 +22,17 @@ public class Recipe {
         return name;
     }
 
-    public float getRecipe() {
-        float sum = 0;
+    public int getRecipe() {
+        int sum = 0;
         for (Product product : products) {
             sum += product.getPrice();
+        }
+        return sum;
+    }
+    public int getRecipePrise() {
+        int sum = 0;
+        for (Product product : products) {
+            sum = product.getAmount() * product.getPrice();
         }
         return sum;
     }
@@ -44,4 +53,5 @@ public class Recipe {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }
