@@ -20,7 +20,7 @@ public class RecipeList {
         stringBuilder.append("Список рецептов").append('\n');
         for (Map.Entry<Recipe, Integer> entry: recipes.entrySet()) {
             stringBuilder.append(entry.getKey().getName()).append(" --> ");
-            stringBuilder.append(entry.getValue().intValue()).append("\n");
+            stringBuilder.append(entry.getValue().intValue()).append(" рублей ").append("\n");
         }
         return stringBuilder.toString();
     }
