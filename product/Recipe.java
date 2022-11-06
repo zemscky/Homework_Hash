@@ -5,10 +5,10 @@ import java.util.*;
 
 public class Recipe {
     private final String name;
-    public static HashMap<Set<Product>,Integer> products = new HashMap<>();
+    public static Set<Product> products = new HashSet<>();
 
 
-    public Recipe(String name,  HashMap<Set<Product>,Integer> products) {
+    public Recipe(String name,  Set<Product> products) {
         if (name == null || name.isBlank()
                 || products == null || products.size() == 0) {
             throw new IllegalArgumentException("Не заполнены все поля");
@@ -20,16 +20,15 @@ public class Recipe {
     public String getName() {
         return name;
     }
-    public int getSum(Product product,Integer sum) {
-        sum = sum + product.getPrice() * product.getAmount();
-        for (Map.Entry<Set<Product>, Integer> entry : products.entrySet()) {
-            products.put(Collections.singleton(product),sum);
-        }
+    public int getSum() {
+        int sum = 0;
+        for (Product product : products) {
+        sum += product.getPrice() * product.getAmount();
+    }
         return sum;
     }
 
-
-    public HashMap<Set<Product>, Integer> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
@@ -44,5 +43,10 @@ public class Recipe {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s --> Цена: %s", this.name, getSum());
     }
 }
