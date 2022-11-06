@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import static product.RecipeList.recipes;
-
-
 public class Product {
 
     private final String name;
@@ -17,14 +14,15 @@ public class Product {
 
 
     public Product(String name, int price, int amount) {
-        if (name == null || name.isBlank() || price < 0 || amount < 0) {
+        if (name == null || name.isBlank() || price < 0) {
             throw new IllegalArgumentException("Заполните карточку товара полностью");
         }
+        this.amount = amount >= 0 ? amount : 1;
         this.name = name; // название продукта
         this.price = price; // цена продукта
-        this.amount = amount; // количество продукта
         this.checked = false;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -45,6 +43,7 @@ public class Product {
         return String.format("%s, Цена: %s, Количество: %s кг, Куплено: %s", this.name,getPrice()
         ,getAmount(),checkedString);
     }
+
 
     public String getName() {
         return name;

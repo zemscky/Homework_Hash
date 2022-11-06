@@ -1,27 +1,35 @@
 package product;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class RecipeList {
-    public static final HashMap<Recipe, Integer> recipes = new HashMap<>();
+    private final HashMap<Recipe,Integer> recipes = new HashMap<>();
 
-    public final HashMap<Recipe, Integer> getRecipes() {
+    public final HashMap<Recipe,Integer> getRecipes() {
         return recipes;
     }
 
-    public void addRecipe(Recipe recipe, Integer integer) {
-        recipes.put(recipe, recipe.getRecipePrise());
+    public void addRecipe (Recipe recipe, Integer integer) {
+        if (recipes.equals(recipe)) {
+            throw new IllegalArgumentException("Такой рецепт уже существует");
+        }else {
+            recipes.put(recipe,recipe.getSum());
+        }
+        recipes.put(recipe,recipe.getSum());
+    }
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Список рецептов").append('\n');
+        for (Map.Entry<Recipe, Integer> entry : recipes.entrySet()) {
+            stringBuilder.append(entry.getKey().getName().toString());
+            stringBuilder.append(entry.getValue().intValue());
+        }
+         return stringBuilder.toString();
     }
 
-    private static void printRecipe() {
-        Set<Map.Entry<Recipe, Integer>> set = recipes.entrySet();
-        for (Map.Entry<Recipe, Integer> recipe : set) {
-            System.out.println(recipe.getKey() + ": ");
-            System.out.println(recipe.getValue());
-        }
-        System.out.println();
-    }
 }
 
