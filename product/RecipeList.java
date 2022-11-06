@@ -1,9 +1,7 @@
 package product;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class RecipeList {
     private final HashMap<Recipe,Integer> recipes = new HashMap<>();
@@ -20,8 +18,9 @@ public class RecipeList {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Список рецептов").append('\n');
-        for (Recipe recipe: recipes.keySet()) {
-            stringBuilder.append(recipe).append('\n');
+        for (Map.Entry<Recipe, Integer> entry: recipes.entrySet()) {
+            stringBuilder.append(entry.getKey().getName()).append(" --> ");
+            stringBuilder.append(entry.getValue().intValue()).append("\n");
         }
         return stringBuilder.toString();
     }

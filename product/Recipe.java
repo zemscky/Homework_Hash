@@ -7,7 +7,6 @@ public class Recipe {
     private final String name;
     public static Set<Product> products = new HashSet<>();
 
-
     public Recipe(String name,  Set<Product> products) {
         if (name == null || name.isBlank()
                 || products == null || products.size() == 0) {
@@ -47,6 +46,8 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return String.format("%s --> Цена: %s", this.name, getSum());
+        return "Recipe{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
