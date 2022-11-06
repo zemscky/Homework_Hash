@@ -6,29 +6,27 @@ import java.util.Map;
 import java.util.Set;
 
 public class RecipeList {
-    private final HashMap<Recipe,Integer> recipes = new HashMap<>();
+    private final HashSet<Recipe> recipes = new HashSet<>();
 
-    public final HashMap<Recipe,Integer> getRecipes() {
+    public final HashSet<Recipe> getRecipes() {
         return recipes;
     }
 
-    public void addRecipe (Recipe recipe, Integer integer) {
+    public void addRecipe (Recipe recipe) {
         if (recipes.equals(recipe)) {
             throw new IllegalArgumentException("Такой рецепт уже существует");
         }else {
-            recipes.put(recipe,recipe.getSum());
+            recipes.add(recipe);
         }
-        recipes.put(recipe,recipe.getSum());
     }
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Список рецептов").append('\n');
-        for (Map.Entry<Recipe, Integer> entry : recipes.entrySet()) {
-            stringBuilder.append(entry.getKey().getName().toString());
-            stringBuilder.append(entry.getValue().intValue());
+        for (Recipe recipe : recipes) {
+            stringBuilder.append(recipes).append('\n');
         }
-         return stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
 }

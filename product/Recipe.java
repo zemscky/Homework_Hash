@@ -5,30 +5,31 @@ import java.util.*;
 
 public class Recipe {
     private final String name;
-    public static final Set<Product> products = new HashSet<>();
+    public static HashMap<Set<Product>,Integer> products = new HashMap<>();
 
 
-    public Recipe(String name,  Set<Product> products) {
+    public Recipe(String name,  HashMap<Set<Product>,Integer> products) {
         if (name == null || name.isBlank()
                 || products == null || products.size() == 0) {
             throw new IllegalArgumentException("Не заполнены все поля");
         }
         this.name = name;
+        this.products = products;
     }
 
     public String getName() {
         return name;
     }
-    public int getSum() {
-        int sum = 0;
-        for (Product product: products){
-            sum = sum + product.getPrice() * product.getAmount();
+    public int getSum(Product product,Integer sum) {
+        sum = sum + product.getPrice() * product.getAmount();
+        for (Map.Entry<Set<Product>, Integer> entry : products.entrySet()) {
+            products.put(Collections.singleton(product),sum);
         }
         return sum;
     }
 
 
-    public Set<Product> getProducts() {
+    public HashMap<Set<Product>, Integer> getProducts() {
         return products;
     }
 

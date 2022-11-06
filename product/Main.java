@@ -21,12 +21,12 @@ public class Main {
         productList.addProduct(sugar);
         System.out.println(productList);
 
-        Recipe recipe1 = new Recipe("Кофе c сахаром",Set.of(coffee,sugar));
+        Recipe recipe1 = new Recipe("Кофе c сахаром",Set.of(coffee,sugar),);
         Recipe recipe2 = new Recipe("Чай с печеньем",Set.of(tea,cookie));
 
         RecipeList recipeList = new RecipeList();
-        recipeList.addRecipe(recipe1, recipe1.getSum());
-        recipeList.addRecipe(recipe2, recipe2.getSum());
+        recipeList.addRecipe(recipe1);
+        recipeList.addRecipe(recipe2);
         System.out.println(recipeList);
 
     }
