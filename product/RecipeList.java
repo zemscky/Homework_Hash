@@ -9,7 +9,11 @@ public class RecipeList {
 
 
     public void addRecipe (Recipe recipe) {
-        recipes.put(recipe,recipe.getSum());
+        if (this.recipes.containsKey(recipe)) {
+            throw new RecipeAlreadyExistsException("Уже есть такой рецепт");
+        } else {
+            recipes.put(recipe, recipe.getSum());
+        }
     }
 
     @Override

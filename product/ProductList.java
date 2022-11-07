@@ -11,11 +11,12 @@ public class ProductList  {
             return;
         }
         if(this.products.contains(product)) {
-            throw new ProductAlreadyExistsException();
+            throw new ProductAlreadyExistsException("Такой продукт уже указан");
         }else {
             this.products.add(product);
         }
     }
+
     public void checkProduct(String name) {
         for (Product product: this.products) {
             if (product.getName().equals(name)) {
