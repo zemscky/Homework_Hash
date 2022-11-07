@@ -1,15 +1,12 @@
 package product;
 
-import multiply.MultiplicationTable;
-import multiply.Task;
-
 import java.util.*;
 
 
 public class Main {
     public static void main(String[] args) {
         Product coffee = new Product("Кофе",150,1);
-        Product sugar = new Product("Сахар",10,2);
+        Product sugar = new Product("Сахар",10,1);
         Product bread = new Product("Хлеб",70,1);
         Product tea = new Product("Чай",100,1);
         Product cookie = new Product("Печенье",100,1);
@@ -21,8 +18,8 @@ public class Main {
         productList.addProduct(sugar);
         System.out.println(productList);
 
-        Recipe recipe1 = new Recipe("Кофе c сахаром",Set.of(sugar,coffee));
-        Recipe recipe2 = new Recipe("Чай с печеньем",Set.of(tea,cookie));
+        Recipe recipe1 = new Recipe("Кофе c сахаром", 2, Set.of(sugar, coffee));
+        Recipe recipe2 = new Recipe("Чай с печеньем", 2, Set.of(tea,cookie));
 
         RecipeList recipeList = new RecipeList();
         recipeList.addRecipe(recipe1);

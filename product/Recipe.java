@@ -5,24 +5,34 @@ import java.util.*;
 
 public class Recipe {
     private final String name;
-    public static Set<Product> products = new HashSet<>();
+    private final int amount;
+    public Set<Product> products = new HashSet<>();
 
-    public Recipe(String name,  Set<Product> products) {
+    public Recipe(String name, int amount, Set<Product> products) {
         if (name == null || name.isBlank()
                 || products == null || products.size() == 0) {
             throw new IllegalArgumentException("Не заполнены все поля");
         }
         this.name = name;
+        this.amount = amount;
         this.products = products;
     }
 
     public String getName() {
         return name;
     }
+    public int getAmount() {
+        int amount = 0;
+        for (Product product : products) {
+            amount += product.getAmount();
+        }
+        return amount;
+    }
+
     public int getSum() {
         int sum = 0;
         for (Product product : products) {
-        sum += product.getPrice() * product.getAmount();
+        sum += product.getPrice() * getAmount();
     }
         return sum;
     }
@@ -36,18 +46,17 @@ public class Recipe {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Recipe recipe = (Recipe) o;
-        return Objects.equals(name, recipe.name);
+        return amount == recipe.amount && Objects.equals(name, recipe.name) && Objects.equals(products, recipe.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, amount, products);
     }
 
     @Override
     public String toString() {
-        return "Recipe{" +
-                "name='" + name + '\'' +
-                '}';
+        return String.format("%s, Количество: %s, Цена: %s рублей", this.name,getAmount()
+                ,getSum());
     }
 }
