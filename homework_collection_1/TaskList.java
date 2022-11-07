@@ -5,6 +5,9 @@ import java.util.*;
 public class TaskList {
     private final HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
     public void getNameAndNumber(String name, Integer number) {
+        if (name == null || name.isEmpty() || number < 0) {
+            throw new IllegalArgumentException("Заполните данные полностью");
+        }
         Iterator<Map.Entry<String, Integer>> iterator = stringIntegerHashMap.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<String, Integer> check = iterator.next();
